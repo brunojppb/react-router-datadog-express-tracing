@@ -1,4 +1,4 @@
-## Remix Datadog Route Matcher
+## Remix Datadog Express Tracing
 
 Make better Datadog traces for [Remix](https://remix.run/) applications using
 [Express](https://expressjs.com/).
