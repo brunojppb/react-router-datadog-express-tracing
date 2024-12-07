@@ -1,7 +1,12 @@
 {
   "name": "remix-datadog-express-tracing",
   "version": "1.0.0",
+  "private": false,
   "type": "module",
+  "author": {
+    "name": "Bruno Paulino",
+    "email": "b@bpaulino.com"
+  },
   "description": "Datadog tracing enricher for Remix Apps",
   "license": "MIT",
   "bugs": {

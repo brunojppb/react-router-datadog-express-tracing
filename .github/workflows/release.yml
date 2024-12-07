@@ -35,6 +35,12 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      # - name: Create Tags
+      #   run: pnpm changeset tag
+
+      # - name: Push tags
+      #   run: git push --follow-tags
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1.4.9
