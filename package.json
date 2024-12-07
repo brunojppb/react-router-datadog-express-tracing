@@ -3,13 +3,29 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Datadog tracing enricher for Remix Apps",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunojppb/remix-datadog-express-tracing/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunojppb/remix-datadog-express-tracing.git"
+  },
+  "keywords": [
+    "Datadog",
+    "Remix",
+    "JavaScript",
+    "TypeScript",
+    "React"
+  ],
   "exports": {
     ".": {
       "import": "./src/index.js"
     }
   },
   "files": [
-    "src/**/*"
+    "src/**/*",
+    "README.md"
   ],
   "peerDependencies": {
     "@remix-run/react": "^2",
