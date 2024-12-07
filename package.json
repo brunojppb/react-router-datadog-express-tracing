@@ -6,7 +6,8 @@
   "type": "module",
   "author": {
     "name": "Bruno Paulino",
-    "email": "b@bpaulino.com"
+    "email": "b@bpaulino.com",
+    "url": "https://bpaulino.com"
   },
   "description": "Datadog tracing enricher for Remix Apps",
   "bugs": {
