@@ -16,7 +16,7 @@ importers:
         version: 5.28.0
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.27.10
+        specifier: 2.27.10
         version: 2.27.10
 
 packages:
