@@ -13,7 +13,7 @@ pnpm add remix-datadog-express-tracing
 
 npm
 
-```
+```shell
 npm install -S remix-datadog-express-tracing
 ```
 
