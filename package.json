@@ -1,0 +1,22 @@
+{
+  "name": "remix-datadog-express-tracing",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Datadog tracing enricher for Remix Apps",
+  "exports": {
+    ".": {
+      "import": "./src/index.js"
+    }
+  },
+  "files": [
+    "src/**/*"
+  ],
+  "peerDependencies": {
+    "@remix-run/react": "^2",
+    "dd-trace": "^5"
+  },
+  "volta": {
+    "node": "22.12.0",
+    "pnpm": "9.15.0"
+  }
+}
