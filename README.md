@@ -1,5 +1,24 @@
 ## Remix Datadog Route Matcher
 
+Make better Datadog traces for [Remix](https://remix.run/) applications using
+[Express](https://expressjs.com/).
+
+### Installation
+
+pnpm
+
+```shell
+pnpm add remix-datadog-express-tracing
+```
+
+npm
+
+```shell
+npm install -S remix-datadog-express-tracing
+```
+
+## Why this library?
+
 When using [Datadog](https://www.datadoghq.com/) for collecting telemetry from
 your backend services, one of the best features Datadog provides is
 [distributed tracing](https://www.datadoghq.com/knowledge-center/distributed-tracing/).

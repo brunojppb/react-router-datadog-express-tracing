@@ -1,6 +1,11 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.0.4/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "brunojppb/remix-datadog-express-tracing"
+    }
+  ],
   "commit": false,
   "fixed": [],
   "linked": [],

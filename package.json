@@ -1,15 +1,37 @@
 {
   "name": "remix-datadog-express-tracing",
+  "license": "MIT",
   "version": "1.0.0",
+  "private": false,
   "type": "module",
+  "author": {
+    "name": "Bruno Paulino",
+    "email": "b@bpaulino.com",
+    "url": "https://bpaulino.com"
+  },
   "description": "Datadog tracing enricher for Remix Apps",
+  "bugs": {
+    "url": "https://github.com/brunojppb/remix-datadog-express-tracing/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunojppb/remix-datadog-express-tracing.git"
+  },
+  "keywords": [
+    "Datadog",
+    "Remix",
+    "JavaScript",
+    "TypeScript",
+    "React"
+  ],
   "exports": {
     ".": {
       "import": "./src/index.js"
     }
   },
   "files": [
-    "src/**/*"
+    "src/**/*",
+    "README.md"
   ],
   "peerDependencies": {
     "@remix-run/react": "^2",
@@ -20,6 +42,7 @@
     "pnpm": "9.15.0"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "2.27.10"
   }
 }
