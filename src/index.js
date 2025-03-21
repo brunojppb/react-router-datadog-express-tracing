@@ -18,15 +18,15 @@
 // See: https://github.com/DataDog/dd-trace-js/issues/3283#issuecomment-1853959632
 /* eslint-disable no-console */
 import fs from 'node:fs';
-import { matchPath } from '@remix-run/react';
 import tracer from 'dd-trace';
+import { matchPath } from 'react-router';
 
 /**
- * Given a request path, tries to find a Remix route path pattern
- * that matches with an existing route in our Remix app.
+ * Given a request path, tries to find a React Router route path pattern
+ * that matches with an existing route in our React app.
  * @param {string} requestPath
  */
-function matchRemixRoutePattern(requestPath) {
+function matchReactRouterRoutePattern(requestPath) {
   const routes = loadRoutesFile();
 
   for (const routePattern of routes) {
@@ -42,7 +42,7 @@ function matchRemixRoutePattern(requestPath) {
 let routesCache = null;
 
 /**
- * The Remix routes file is loaded only once during startup.
+ * The React Router routes file is loaded only once during startup.
  * Then it's cached in-memory for the entire app lifecycle.
  */
 function loadRoutesFile() {
@@ -50,15 +50,16 @@ function loadRoutesFile() {
     return routesCache;
   }
 
-  if (typeof process.env.REMIX_DD_ROUTE_FILE === 'undefined') {
+  if (typeof process.env.REACT_ROUTER_DD_ROUTE_FILE === 'undefined') {
     throw new Error(
-      'No Remix routes file passed in to the REMIX_DD_ROUTE_FILE environment variable. ' +
-        'Please generate a Remix routes file with the remix CLI during build time.' +
-        '',
+      'No React Router routes file passed in the REACT_ROUTER_DD_ROUTE_FILE environment variable. ' +
+        'Please generate a React Router routes file with the React Router CLI during build time ' +
+        'with the following command: `react-router routes --json >> ./build/react_router_routes.json `' +
+        'and assign the JSON file path to the REACT_ROUTER_DD_ROUTE_FILE environment variable.',
     );
   }
 
-  const routesFile = fs.readFileSync(process.env.REMIX_DD_ROUTE_FILE);
+  const routesFile = fs.readFileSync(process.env.REACT_ROUTER_DD_ROUTE_FILE, 'utf8');
 
   const routesJson = JSON.parse(routesFile);
   const routes = flattenRoutes(routesJson);
@@ -94,10 +95,10 @@ function flattenRoutes(json) {
 
 /**
  * Enrich Dadadog tracing span with the current request path
- * matching Remix route pattern.
+ * matching React Router route patterns.
  *
- * While dd-trace doesn't have support for Remix and Express, 
- * we must do this manually for now so traces are more usable.
+ * While dd-trace doesn't have support for React Router, we must do
+ * this manually for now.
  * See: https://github.com/DataDog/dd-trace-js/issues/3283
  */
 function enrichTracer() {
@@ -109,16 +110,14 @@ function enrichTracer() {
 
         if (host && path && span) {
           try {
-            // Here the protocol doesn't matter much. It's just for
-            // having a fully-formed URL used by the matching function
             const url = new URL(`https://${host}${path}`);
-            const matchPattern = matchRemixRoutePattern(url.pathname);
+            const matchPattern = matchReactRouterRoutePattern(url.pathname);
 
             if (matchPattern) {
               span.setTag('http.route', matchPattern);
             }
           } catch (error) {
-            console.debug(`Invalid request host="${host}" path="${path}"`, error);
+            console.debug(`Invalid request host=${host} path=${path}`, error);
           }
         }
       },
