@@ -1,20 +1,20 @@
-## Remix Datadog Express Tracing
+## React Router Datadog Express Tracing
 
-Make better Datadog traces for [Remix](https://remix.run/) applications using
-[Express](https://expressjs.com/).
+Make better Datadog traces for [React Router](https://reactrouter.com/)
+applications using [Express](https://expressjs.com/).
 
 ### Installation
 
 pnpm
 
 ```shell
-pnpm add remix-datadog-express-tracing
+pnpm add react-router-datadog-express-tracing
 ```
 
 npm
 
 ```shell
-npm install -S remix-datadog-express-tracing
+npm install -S react-router-datadog-express-tracing
 ```
 
 ## Why this library?
@@ -24,8 +24,9 @@ your backend services, one of the best features Datadog provides is
 [distributed tracing](https://www.datadoghq.com/knowledge-center/distributed-tracing/).
 
 While Datadog works out-of-the-box with many frameworks like
-[Express](https://expressjs.com/), the route handler we have from Remix does not
-work properly due to being a catch-all handler when using an Express server.
+[Express](https://expressjs.com/), the route handler we have from React Router
+does not work properly due to being a catch-all handler when using an Express
+server.
 
 This limits the ability of debugging on which URL pattern our request traces are
 hitting as everything will be marked under the `/` route in Datadog.
@@ -33,7 +34,7 @@ hitting as everything will be marked under the `/` route in Datadog.
 The Datadog team is aware about this (See this
 [issue here](https://github.com/DataDog/dd-trace-js/issues/3283#issuecomment-1653821725))
 and while they are more invested in the NextJS ecosystem, there are no plans to
-prioritize Remix at the moment.
+prioritize React Router at the moment.
 
 ## Dynamically enriching Datadog traces
 
@@ -59,19 +60,19 @@ any public APIs.
 
 Although, this library takes a single input:
 
-- A generated routes file from the Remix CLI. During the build process, you can
-  generate this file with:
+- A generated routes file from the React Router CLI. During the build process,
+  you can generate this file with:
 
 ```shell
-pnpm exec remix routes --json >> ./build/remix_routes.json
+pnpm exec react-router routes --json >> ./build/react_router_routes.json
 ```
 
 Once this file is generated, you must define the following environment variable:
 
-- `REMIX_DD_ROUTE_FILE`
+- `REACT_ROUTER_DD_ROUTE_FILE`
 
 ```shell
-export REMIX_DD_ROUTE_FILE="./build/remix_routes.json"
+export REACT_ROUTER_DD_ROUTE_FILE="./build/react_router_routes.json"
 ```
 
 Now during your server startup script, you must call this with ESM only Node
@@ -80,21 +81,19 @@ apps (as described here in the
 just after initializing the Datadog tracer with the following:
 
 ```shell
-node --import dd-trace/register.js --import remix-datadog-express-tracing my_app.js
+node --import dd-trace/register.js --import react-router-datadog-express-tracing my_app.js
 ```
 
 If you are starting up your app via Docker:
 
 ```Dockerfile
-ENV REMIX_DD_ROUTE_FILE="./build/remix_routes.json"
-CMD ["node", "--import", "dd-trace/register.js", "--import", "remix-datadog-express-tracing", "./build/express/index.js"]
+ENV REACT_ROUTER_DD_ROUTE_FILE="./build/remix_routes.json"
+CMD ["node", "--import", "dd-trace/register.js", "--import", "react-router-datadog-express-tracing", "./build/express/index.js"]
 ```
 
 ## Dependencies
 
 This package depends on the following peer dependencies:
 
-- [x] [@remix-run/react](https://www.npmjs.com/package/@remix-run/react)
-      compatible with version ^2
-- [x] [dd-trace](https://www.npmjs.com/package/dd-trace) compatible with version
-      ^5
+- [x] [react-router](https://www.npmjs.com/package/react-router) compatible with version ^7
+- [x] [dd-trace](https://www.npmjs.com/package/dd-trace) compatible with version ^5
