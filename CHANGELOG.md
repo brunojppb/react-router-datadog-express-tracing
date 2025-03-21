@@ -1,5 +1,26 @@
 # remix-datadog-express-tracing
 
+## 1.0.0
+
+### Major Changes
+
+- [#8](https://github.com/brunojppb/react-router-datadog-express-tracing/pull/8)
+  [`7d43c60`](https://github.com/brunojppb/react-router-datadog-express-tracing/commit/7d43c607905cc86c2bd955f0ba20f1efaeba0428)
+  Thanks [@brunojppb](https://github.com/brunojppb)! - Rename package to support
+  [React Router 7](https://reactrouter.com/)
+
+  This is a major change in this package given that I've chosen to rename it to
+  be more compatible with React Router 7.
+
+  The API is exactly the same, but we now have React Router 7 as a peer
+  dependency instead.
+
+  Please, refer to our README on how to integrate this package on your React
+  Router app.
+
+  If you are running Remix, use the last version of this package
+  [here on npm](https://www.npmjs.com/package/remix-datadog-express-tracing).
+
 ## 1.0.2
 
 ### Patch Changes
